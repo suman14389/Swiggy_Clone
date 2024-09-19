@@ -7,11 +7,14 @@ import About from './About';
 import ErrorRoute from './ErrorRoute';
 import Body from './Components/Body';
 import RestroMenu from './RestroMenu';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider }from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import Shimmer from './Components/Shimmer';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
+const Grocery = lazy(()=> import("./Components/Grocery"));
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +36,12 @@ const router = createBrowserRouter([
       {
         path: "/restaurants/:name/:id",
         element: <RestroMenu/>
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<Shimmer width="1000" height="300"/>}>
+         <Grocery />
+        </Suspense>
       }
     ]
   },
