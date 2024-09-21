@@ -27,29 +27,36 @@ const RestroMenu = () => {
         return <Shimmer width={1000} height={200} />
     }
 
-    return <div className="restro-menu-container">
-        <div className="res-info-menu">
-            <h1>{resInfo?.name}</h1>
-            <p className="font-size-12">{resInfo?.cuisines.join(', ')} </p>
-            <p className="font-size-12">{resInfo.avgRating} star, {resInfo.totalRatingsString} </p>
+    console.log(menuItems);
+
+    return <div className="mt-8 mx-48">
+        <div className="border border-solid bg-gray-400 p-4 rounded-md text-center">
+            <h1 className="font-bold">{resInfo?.name}</h1>
+            <p >{resInfo?.cuisines.join(', ')} </p>
+            <p className="font-bold">{resInfo.avgRating} star, {resInfo.totalRatingsString} </p>
         </div> 
-        <div className="res-menu-items">
+        <div className="w-full">
             {
                 menuItems.map((item) => {
-                    return <div className="res-menu-item" key={item.card.info.id}>
-                        <div>
-                            <h3>{item.card.info.name}</h3>
-                            <h4> Rs.{item.card.info.defaultPrice || item.card.info.price/100}</h4>
-                            <p style={{'margin-top': '20px'}}> {item.card.info.ratings.aggregatedRating.rating} star ({item.card.info.ratings.aggregatedRating.ratingCount}) </p>
-                            <p style={{'margin-top': '10px'}}>{item.card.info.description} </p>
+                    return <div className="flex justify-between border border-light border-black my-4 p-4 rounded-md w-full" key={item.card.info.id}>
+                        <div className="me-6 w-5/7">
+                            <h3 className="font-bold">{item.card.info.name}</h3>
+                            <h4> Rs. {item.card.info.defaultPrice || item.card.info.price/100}</h4>
+                            {
+                                item.card.info.ratings.aggregatedRating.rating ? (<p className="mt-4 font-bold"> {item.card.info.ratings.aggregatedRating.rating} star ({item.card.info.ratings.aggregatedRating.ratingCount}) </p>) : null
+                            }
+                            <p className="mt-3 max-w-3xl">{item.card.info.description} </p>
                         </div>
-                        {
-                            item.card.info.showImage && 
-                                <img alt="res-menu-image" 
-                                    className="res-menu-image"
-                                    src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item.card.info.imageId} 
-                                />
-                        }
+                        <div className="flex flex-col justify-center items-center w-2/7">
+                            {
+                                item.card.info.showImage &&
+                                    <img alt="res-menu-image"
+                                        className="w-32 h-28 rounded-md object-cover"
+                                        src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/"+item.card.info.imageId} 
+                                    />
+                            }
+                            <button className="bg-green-400 rounded-md p-2 mt-2 w-full cursor-pointer">Add + </button>
+                        </div>
                     </div>
                 })
             }

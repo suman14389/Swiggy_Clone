@@ -7,7 +7,7 @@ import {Outlet} from "react-router-dom"
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="m-0 p-0 w-full">
       
         <Header />
       

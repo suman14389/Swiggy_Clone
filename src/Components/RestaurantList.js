@@ -14,16 +14,16 @@ const RestroCard = (data) => {
     //     const json = await data.json();
     //     console.log(json);
     // }
-    return <div className="restro-card">
+    return <div className="w-64 border-2 border-solid border-black rounded-lg p-2 max-h-62 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
         <img 
             alt="restro-image" 
-            className="restro-image"
+            className="w-full h-52"
             src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+data.cloudinaryImageId} 
         />
         <div className="restro-info">
-            <h3>{data.name}</h3>
+            <h3 className="font-bold">{data.name}</h3>
             <p>{data.cuisines.join(", ")}</p>
-            <p style={{fontWeight: "bold"}}>{data.avgRating} stars</p>
+            <p className="font-bold">{data.avgRating} stars</p>
             <p >{data.minDeliveryTime} - {data.maxDeliveryTime} Minutes</p>
         </div>
     </div>
@@ -31,7 +31,7 @@ const RestroCard = (data) => {
 
 const RestaurantList = ({list}) => {
 
-    return <div className="restaurant-list">
+    return <div className="flex flex-wrap gap-8">
         {
             list.map((item) => {
                 return <Link key={item.data.id} to={`/restaurants/${item.data.name.split(" ").join("-")}/${item.data.id}`} className="link">

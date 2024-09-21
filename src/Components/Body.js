@@ -33,14 +33,14 @@ const Body = () => {
     useEffect(() => {
         updateFilteredRestros();
     }, [searchRestro])
-    
-    return <div className="body">
-        <div className="search-container">
-            <input type="text" value={searchRestro} onChange={handleSearch}/>
+
+    return <div className="m-4">
+        <div className="w-40 flex mb-8">
+            <input className="p-2 mr-2 border-2 border-solid border-black" type="text" value={searchRestro} onChange={handleSearch}/>
             <button>Search</button>
         </div>
         {
-            filteredRestroList.length ? <RestaurantList list={filteredRestroList}/> : <h6 className="zero-restros-state">There are no restaurants</h6>
+            filteredRestroList.length ? <RestaurantList list={filteredRestroList}/> : <div className="flex items-center justify-center h-60 bg-blue-50">There are no restaurants....</div>
         }
     </div>
 }
