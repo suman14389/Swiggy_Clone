@@ -3,6 +3,7 @@ import "../App.css";
 import RestaurantList from "./RestaurantList";
 import { useState } from "react";
 import {restaurantList} from "../Constants"
+import Accordion from "../Utils/Accordion";
 
 const Body = () => {
 
@@ -41,7 +42,7 @@ const Body = () => {
         </div>
         {
             filteredRestroList.length ? <RestaurantList list={filteredRestroList}/> : <div className="flex items-center justify-center h-60 bg-blue-50">There are no restaurants....</div>
-        }
+}                       
     </div>
 }
 
