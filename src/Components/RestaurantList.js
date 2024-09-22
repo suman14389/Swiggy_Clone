@@ -14,7 +14,7 @@ const RestroCard = (data) => {
     //     const json = await data.json();
     //     console.log(json);
     // }
-    return <div className="w-64 border-2 border-solid border-black rounded-lg p-2 max-h-62 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
+    return <div className="w-60 border-2 border-solid border-black bg-slate-200 rounded-lg p-2 max-h-62 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
         <img 
             alt="restro-image" 
             className="w-full h-52"
@@ -31,7 +31,7 @@ const RestroCard = (data) => {
 
 const RestaurantList = ({list}) => {
 
-    return <div className="flex flex-wrap gap-8">
+    return <div className="flex flex-wrap gap-10">
         {
             list.map((item) => {
                 return <Link key={item.data.id} to={`/restaurants/${item.data.name.split(" ").join("-")}/${item.data.id}`} className="link">

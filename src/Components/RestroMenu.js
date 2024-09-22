@@ -39,8 +39,8 @@ const RestroMenu = () => {
         <div className="w-full">
             {
                 menuItems.map((item) => {
-                    return <Accordion title={item.card.info.name}>
-                        <div className="flex justify-between border border-light border-black my-4 p-4 rounded-md w-full" key={item.card.info.id}>
+                    return <Accordion title={item.card.info.name} key={item.card.info.id}>
+                        <div className="flex justify-between border border-light border-black my-4 p-4 rounded-md w-full">
                             <div className="me-6 w-5/7">
                                 <h3 className="font-bold">{item.card.info.name}</h3>
                                 <h4> Rs. {item.card.info.defaultPrice || item.card.info.price/100}</h4>
@@ -62,7 +62,7 @@ const RestroMenu = () => {
                         </div>
                     </Accordion>
                 })
-            }  
+            }
         </div>
     </div>
 }
